@@ -1,0 +1,355 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0-460-gbb4fff9\n"
+"POT-Creation-Date: 2015-02-04 13:27-0300\n"
+"PO-Revision-Date: 2015-02-04 13:27-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: plugins/pairwise/test/functional/profile/pairwise_plugin_profile_controller_test.rb:172
+#: plugins/pairwise/test/functional/profile/pairwise_plugin_profile_controller_test.rb:195
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:38
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:39
+msgid "Invalid request"
+msgstr "Requisição inválida"
+
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:72
+msgid "Only logged user could suggest new ideas"
+msgstr "Apenas usuários logados podem sugerir novas ideias"
+
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:79
+msgid "Thanks for your contributtion!"
+msgstr "Obrigado pela sua contribuição!"
+
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:82
+msgid "Unfortunatelly, we are not able to register your idea."
+msgstr "Infelizmente não foi possível registrar sua ideia."
+
+#: plugins/pairwise/controllers/profile/pairwise_plugin_profile_controller.rb:84
+msgid "Unfortunatelly, new ideas are not allowed anymore."
+msgstr "Infelizmente não é mais permitido sugerir novas ideias."
+
+#: plugins/pairwise/lib/pairwise/client.rb:53 plugins/pairwise/lib/pairwise/client.rb:64
+#: plugins/pairwise/lib/pairwise/client.rb:71
+msgid "Invalid choice id"
+msgstr "Escolha inválida"
+
+#: plugins/pairwise/lib/pairwise/client.rb:54
+msgid "Empty choice text"
+msgstr "Texto da escolha vazio"
+
+#: plugins/pairwise/lib/pairwise/client.rb:114
+msgid "Vote not registered. Please check if all the necessary parameters were passed."
+msgstr "Voto não registrado. Favor verificar se foram passados todos os parâmetros necessários."
+
+#: plugins/pairwise/lib/pairwise/client.rb:135
+msgid "Could not skip vote. Check the parameters"
+msgstr "Não foi possível pular o voto. Verifique os parâmetros"
+
+#: plugins/pairwise/lib/pairwise/client.rb:184
+msgid "Idea text is empty"
+msgstr "O texto da ideia está vazio"
+
+#: plugins/pairwise/lib/pairwise_plugin/questions_group_block.rb:4
+#: plugins/pairwise/lib/pairwise_plugin/questions_group_list_block.rb:4
+msgid "Display question of a group of questions"
+msgstr "Mostrar um grupo de questões"
+
+#: plugins/pairwise/lib/pairwise_plugin/questions_group_block.rb:8
+#: plugins/pairwise/lib/pairwise_plugin/questions_group_list_block.rb:8
+msgid "This block displays one of your pairwise questions in a predefined group. You can edit the block to select which one of your questions is going to be displayed in the block."
+msgstr "Este bloco exibe suas questões de acordo com um grupo predefinido. Você pode editar o bloco e selecionar quais questões serão exibidas."
+
+#: plugins/pairwise/lib/pairwise_plugin/questions_group_block.rb:17
+msgid "No Question selected yet."
+msgstr "Nenhuma questão selecionada"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:13
+msgid "Vote"
+msgstr "Votar"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:25 plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:37
+msgid "Skip vote"
+msgstr "Pular voto"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:50
+msgid "Processing... please wait."
+msgstr "Processando... por favor aguarde."
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:95
+msgid "Pairwise Embeded"
+msgstr "Embutir questão pairwise"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:97
+msgid "You can put this iframe in your site. Replace <b>source</b> param with your site address and make any needed adjusts in width and height."
+msgstr "Voce pode colocar este iframe em seu site. Substitua <b>source</b> pelo endereço do seu site e ajuste os atributos de largura e altura."
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/viewer_helper.rb:145
+msgid "Showing"
+msgstr "Exibindo"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/suggestions_helper.rb:62 plugins/pairwise/views/content_viewer/_menu.html.erb:9
+msgid "Edit"
+msgstr "Editar"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/suggestions_helper.rb:66
+msgid "Approve"
+msgstr "Aprovar"
+
+#: plugins/pairwise/lib/pairwise_plugin/helpers/suggestions_helper.rb:70
+msgid "Reprove"
+msgstr "Reprovar"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_question_block.rb:8
+msgid "Display active pairwise question"
+msgstr "Exibir questão pariwise ativa"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_question_block.rb:12
+msgid "This block displays a pairwise question."
+msgstr "Este bloco exibe uma questão pairwise"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:13
+msgid "I like both ideas"
+msgstr "Eu gostei de ambas ideias"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:14
+msgid "I think both ideas are the same"
+msgstr "As duas ideias são as mesmas"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:15
+msgid "I don't know enough about either idea"
+msgstr "Não sei o suficiente sobre ambas ideias"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:16
+msgid "I don't like either idea"
+msgstr "Não gostei destas ideias"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:17
+msgid "I don't know enough about: "
+msgstr "Não sei o suficiente sobre: "
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:18
+msgid "I just can't decide"
+msgstr "Não consigo decidir"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:161
+msgid "Excepted question not found"
+msgstr "Questão esperada não encontrada"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:187
+msgid "Choices empty"
+msgstr "As alternativas estão vazias"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:188
+msgid "Choices invalid format"
+msgstr "Formato inválido para as alternativas"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:189
+msgid "Choices invalid"
+msgstr "Alternativas inválidas"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:192
+msgid "Choice empty"
+msgstr "Alternativa vazia"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:202 plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:211
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:255
+msgid "Choices:"
+msgstr "Alternativas: "
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:244
+msgid "Choices: Error adding new choice to question"
+msgstr "Alternativas: Erro ao adicionar nova alternativa a questão"
+
+#: plugins/pairwise/lib/pairwise_plugin/pairwise_content.rb:263
+msgid "Question not saved:  "
+msgstr "Questão não foi salva: "
+
+#: plugins/pairwise/lib/pairwise_plugin.rb:8
+msgid "A plugin that add a pairwise client feature to noosfero."
+msgstr "Um plugin que adiciona um cliente pairwise."
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:4
+msgid "Pairwise Question"
+msgstr "Questão Pairwise"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:5
+msgid "Question text"
+msgstr "Texto da questão"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:7 plugins/pairwise/views/content_viewer/_menu.html.erb:7
+msgid "Results"
+msgstr "Resultados"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:76
+msgid "Ideas"
+msgstr "Ideias"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:79
+msgid "Suggestions"
+msgstr "Sugestões"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:86
+msgid "Pending"
+msgstr "Pendentes"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:89
+msgid "Reproved"
+msgstr "Reprovadas"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:111
+msgid "Type words about ideas/suggestions you're looking for"
+msgstr "Digite algo sobre as ideias/sugestões que você procura"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:115
+msgid "Search"
+msgstr "Buscar"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:125
+msgid "Text"
+msgstr "Texto"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:128
+msgid "Date"
+msgstr "Data"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/index.html.erb:131
+msgid "Author"
+msgstr "Autor"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/edit.html.erb:1
+msgid "Edit Pairwise Question Choice"
+msgstr "Editar Alternativa da Questão Pairwise"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/edit.html.erb:13
+msgid "Active"
+msgstr "Activar"
+
+#: plugins/pairwise/views/pairwise_plugin_suggestions/edit.html.erb:15
+msgid "Update"
+msgstr "Atualizar"
+
+#: plugins/pairwise/views/pairwise_plugin_profile/_suggestion_form.html.erb:12
+msgid "Type your idea here"
+msgstr "Digite sua ideia aqui"
+
+#: plugins/pairwise/views/pairwise_plugin_profile/_suggestion_form.html.erb:15
+msgid "Send"
+msgstr "Enviar"
+
+#: plugins/pairwise/views/box_organizer/pairwise_plugin/_questions_group_block.html.erb:4
+#: plugins/pairwise/views/box_organizer/pairwise_plugin/_questions_group_list_block.html.erb:4
+msgid "You don't have an community defined as the portal community. Define it before use this block properly."
+msgstr "Você não tem uma comunidade definida como portal. Defina antes de usar esse bloco corretamente."
+
+#: plugins/pairwise/views/box_organizer/pairwise_plugin/_questions_group_list_block.html.erb:11
+msgid "Description:"
+msgstr "Descrição:"
+
+#: plugins/pairwise/views/box_organizer/pairwise_plugin/_questions_group_list_block.html.erb:15
+msgid "Choose which attributes should be displayed and drag to reorder them:"
+msgstr "Escolha os atributos que devem ser exibidos e arraste para reordená-los:"
+
+#: plugins/pairwise/views/box_organizer/pairwise_plugin/_questions_group_list_block.html.erb:27
+msgid "Show items in a random order"
+msgstr "Exiba os itens em orderm aleatória"
+
+#: plugins/pairwise/views/cms/pairwise_plugin/_pairwise_content_form.html.erb:17
+msgid "Choices"
+msgstr "Alternativas"
+
+#: plugins/pairwise/views/cms/pairwise_plugin/_pairwise_content_form.html.erb:36
+msgid "New choice"
+msgstr "Nova alternativa"
+
+#: plugins/pairwise/views/content_viewer/_prompt_body.html.erb:9
+msgid "Powered by"
+msgstr ""
+
+#: plugins/pairwise/views/content_viewer/_prompt_body.html.erb:24
+msgid "Would you like to suggest an idea?"
+msgstr "Gostaria de sugerir uma ideia?"
+
+#: plugins/pairwise/views/content_viewer/_prompt_body.html.erb:32
+msgid "Add new idea"
+msgstr "Adicionar nova ideia"
+
+#: plugins/pairwise/views/content_viewer/_menu.html.erb:5
+msgid "Pairwise Vote"
+msgstr "Votação"
+
+#: plugins/pairwise/views/content_viewer/_menu.html.erb:10
+msgid "Manage Ideas"
+msgstr "Gerenciar Ideias"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:11
+msgid "Pairwise Integration Error"
+msgstr "Erro de Integração com o Pairwise"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:12
+msgid "Please contact the administrator"
+msgstr "Favor contactar o administrador"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:25
+msgid "Total votes:"
+msgstr "Total de votos:"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:31
+msgid "Choice Text"
+msgstr "Texto da Alternativa"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:32
+msgid "The ideia is better than the other ideas"
+msgstr "A ideia é melhor do que as outras ideias"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:32
+msgid "Choice Wins"
+msgstr "Vitórias"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:33
+msgid "The other ideas were chosen"
+msgstr "As outras ideias foram escolhidas"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:33
+msgid "Choice Losses"
+msgstr "Derrotas"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:34
+msgid "Rank of the ideias"
+msgstr "Ranking de ideias"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:34
+msgid "Choice Score"
+msgstr "Pontuação"
+
+#: plugins/pairwise/views/content_viewer/_result.html.erb:53
+msgid "Show/Hide Embeded Code"
+msgstr "Exibir/Esconder código para embutir"
+
+#: plugins/pairwise/views/pairwise_plugin_admin/index.html.erb:1
+msgid "Pairwise settings"
+msgstr "Configurações do Pairwise"
+
+#: plugins/pairwise/views/pairwise_plugin_admin/index.html.erb:6
+msgid "Pairwise api host"
+msgstr ""
+
+#: plugins/pairwise/views/pairwise_plugin_admin/index.html.erb:7
+msgid "Pairwise username"
+msgstr ""
+
+#: plugins/pairwise/views/pairwise_plugin_admin/index.html.erb:8
+msgid "Pairwise password"
+msgstr ""
+
+#: plugins/pairwise/views/pairwise_plugin_admin/index.html.erb:13
+msgid "Save"
+msgstr "Salvar"
+
+#: plugins/pairwise/views/blocks/questions_group_list.html.erb:11
+msgid "Empty"
+msgstr "Vazio"
