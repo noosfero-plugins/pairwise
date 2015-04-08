@@ -1,0 +1,73 @@
+<% extend PairwisePlugin::Helpers::ViewerHelper %>
+<% questions = block.questions_for_view || [] %>
+
+<%= block_title(block.title) %>
+
+<div id='pairwise_group_list_block_<%= block.id %>' class="pairwise_group_menu_container" data-open-prompt="0">
+  <div class="description">
+    <%= block.group_description %>
+  </div>
+
+
+  <div class="questions-menu clearfix">
+    <span class="menu-icon">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </span>
+    <span class="icon-label"><%= _('Select theme') %></span>
+    <div class="menu" style="display: none">
+      <div class="label">
+        <%= _('Select a theme:') %>
+      </div>
+      <div class="items">
+        <% questions.each_with_index do |pairwise_content, index| %>
+          <div class="item <%= pairwise_group_row_classes(index) %>">
+            <a href="#"><%= pairwise_content.name %></a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+	<div class="question container">
+    <% if block.questions.nil?  || block.questions.empty? %>
+      <span><%= _("Empty") %></span>
+    <% else %>
+      <% questions.each_with_index do |pairwise_content, index| %>
+        <%= pairwise_group_content_body(index, pairwise_content) %>
+      <% end %>
+    <% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    $('.pairwise_group_menu_container .questions-menu .menu-icon').click(function() {
+      $(this).siblings('.menu').toggle('fast');
+    });
+    $('.pairwise_group_menu_container .questions-menu .items .row').click(function() {
+      $('.pairwise_group_menu_container .questions-menu .menu').hide('fast');
+    });
+  });
+
+// FIXME move to js file
+jQuery(document).ready(function($){
+	var block_id = '#pairwise_group_list_block_<%= block.id %>';
+	var block_element = $(block_id);
+	var questions_arrows = $(block_id + ' .arrow');
+	var questions_rows = $(block_id + ' .row');
+	var questions_bodies = $(block_id + ' .pairwise_inner_body');
+	questions_rows.click(function(){
+		var current_open =  parseInt(block_element.attr('data-open-prompt'));
+		var index_clicked = questions_rows.index(this);
+		if(index_clicked != current_open){
+			block_element.attr('data-open-prompt', index_clicked);
+			$(questions_bodies[current_open]).slideToggle();
+			$(questions_rows[current_open]).toggleClass("secondary");
+
+			$(questions_bodies[index_clicked]).slideToggle();
+			$(questions_rows[index_clicked]).toggleClass("secondary");
+		}
+	});
+});
+</script>

@@ -421,8 +421,8 @@ div.pairwise_group_list_container {
 }
 
 div.pairwise_group_list_container .row {
-    font-size: 14px;
-    height: 40px;
+  font-size: 14px;
+  height: 40px;
 	width:100%;
 	background-color: #F8C300;
   vertical-align: middle;
@@ -430,6 +430,46 @@ div.pairwise_group_list_container .row {
   margin-bottom:auto;
   padding:0px;
   cursor: auto;
+}
+
+div.pairwise_group_menu_container .row {
+  cursor: auto;
+  font-weight: bold;
+}
+div.pairwise_group_menu_container .row.secondary {
+  font-weight: normal;
+}
+div.pairwise_group_menu_container .questions-menu .menu-icon {
+  float: right;
+  font-size: 16px;
+}
+div.pairwise_group_menu_container .questions-menu .icon-label {
+  float: right;
+}
+div.pairwise_group_menu_container .questions-menu .icon-bar {
+  background-color: rgb(100, 100, 100);
+  display: block;
+  width: 1.125em;
+  height: 0.125em;
+  border-radius: 1px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+  margin: 3px;
+}
+div.pairwise_group_menu_container .questions-menu .menu {
+  position: absolute;
+  background-color: rgb(247, 247, 247);
+  width: 96%;
+  z-index: 999;
+  padding: 10px;
+  top: 45px;
+  box-shadow: -5px 7px 10px #888888;
+}
+div.pairwise_group_menu_container .questions-menu .menu .item a {
+  text-decoration: none;
+}
+div.pairwise_group_menu_container .questions-menu .menu .label {
+  color: rgb(175, 175, 175);
+  margin-bottom: 10px;
 }
 
 div.pairwise_group_list_container .row p {

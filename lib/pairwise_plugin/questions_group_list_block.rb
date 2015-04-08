@@ -9,8 +9,11 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
   end
 
   settings_items :group_description, :type => String
+  settings_items :view_type, :type => String, :default => 'menu'
 
-  attr_accessible :group_description, :questions_ids, :random_sort
+  attr_accessible :group_description, :questions_ids, :random_sort, :view_type
+
+  AVAILABLE_VIEW_TYPES = [[_('Menu'), 'menu'], [_('List'), 'list']]
 
   def content(args={})
     block = self
@@ -20,7 +23,7 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     #  content += ( question ? article_to_html(question,:gallery_view => false, :format => 'full').html_safe : _('No Question selected yet.') )
     #end
     proc do
-      render :file => 'blocks/questions_group_list', :locals => {:block => block}
+      render :file => "blocks/questions_group_#{block.view_type}", :locals => {:block => block}
     end
   end
 
@@ -38,8 +41,8 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
 
   def contains_question?(id)
     if self.settings[:questions_ids]
-      self.settings[:questions_ids].include?(id.to_s) 
-    else 
+      self.settings[:questions_ids].include?(id.to_s)
+    else
       return false
     end
   end
@@ -94,19 +97,19 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     conditions = {}
     if questions_ids && !questions_ids.empty?
       questions_ids.each do |id|
-        if self.owner.kind_of?(Environment) 
-          question = self.owner.portal_community.questions.find(id) 
+        if self.owner.kind_of?(Environment)
+          question = self.owner.portal_community.questions.find(id)
         else
           question = self.owner.questions.find(id)
-        end          
+        end
         result << question
-      end     
+      end
       conditions = { :conditions => ['id not in (?)', questions_ids] }
     end
 
-    if self.owner.kind_of?(Environment) 
+    if self.owner.kind_of?(Environment)
       result += self.owner.portal_community.questions.find(:all, conditions)
-    else 
+    else
       result += self.owner.questions.find(:all, conditions)
     end
     result
