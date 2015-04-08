@@ -1,14 +1,7 @@
 <% extend PairwisePlugin::Helpers::ViewerHelper %>
 <% questions = block.questions_for_view || [] %>
 
-<%= block_title(block.title) %>
-
 <div id='pairwise_group_list_block_<%= block.id %>' class="pairwise_group_menu_container" data-open-prompt="0">
-  <div class="description">
-    <%= block.group_description %>
-  </div>
-
-
   <div class="questions-menu clearfix">
     <span class="menu-icon">
       <span class="icon-bar"></span>
@@ -16,25 +9,51 @@
       <span class="icon-bar"></span>
     </span>
     <span class="icon-label"><%= _('Select theme') %></span>
-    <div class="menu" style="display: none">
-      <div class="label">
-        <%= _('Select a theme:') %>
+    <% if questions.count > 1 %>
+      <div class="menu" style="display: none">
+        <div class="label">
+          <%= _('Select a specific theme below to vote on proposals:') %>
+        </div>
+        <div class="items">
+          <% questions.each_with_index do |pairwise_content, index| %>
+            <div class="item <%= pairwise_group_row_classes(index) %>">
+              <%= pairwise_content.name %>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div class="items">
-        <% questions.each_with_index do |pairwise_content, index| %>
-          <div class="item <%= pairwise_group_row_classes(index) %>">
-            <a href="#"><%= pairwise_content.name %></a>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
 	<div class="question container">
-    <% if block.questions.nil?  || block.questions.empty? %>
+    <% if block.questions.blank? %>
       <span><%= _("Empty") %></span>
     <% else %>
       <% questions.each_with_index do |pairwise_content, index| %>
-        <%= pairwise_group_content_body(index, pairwise_content) %>
+        <%#= pairwise_group_content_body(index, pairwise_content) %>
+        <div class="pairwise_inner_body" id="pairwise_inner_body_<%= pairwise_content.id %>" style="<%= index!=0 ? 'display:none' : '' %>" >
+          <div id="pairwise_<%= pairwise_content.id %>">
+          <div id="pairwise_main" class="pairwise_main">
+            <% embeded = params[:embeded] %>
+            <% question = nil %>
+
+            <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :prompt} %>
+
+            <div class="pairwise_content">
+              <div class="pairwise_body"><%= block.title %></div>
+              <div class="description">
+                <%= block.group_description %>
+              </div>
+              <div class=""><%= pairwise_content.title %></div>
+              <%= render :partial => 'content_viewer/pairwise_prompts', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
+              <% if embeded %>
+                <div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
+              <% end %>
+            </div>
+
+            <%= render :partial => 'content_viewer/pairwise_skip_vote', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
+          </div>
+          </div>
+        </div>
       <% end %>
     <% end %>
 	</div>
@@ -43,7 +62,7 @@
 <script type="text/javascript">
   jQuery(document).ready(function($){
     $('.pairwise_group_menu_container .questions-menu .menu-icon').click(function() {
-      $(this).siblings('.menu').toggle('fast');
+      $(this).siblings('.menu').toggle();
     });
     $('.pairwise_group_menu_container .questions-menu .items .row').click(function() {
       $('.pairwise_group_menu_container .questions-menu .menu').hide('fast');

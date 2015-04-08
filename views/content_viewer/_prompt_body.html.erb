@@ -9,14 +9,7 @@
        	<div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
       <% end %>
   </div>
-	<div class="skip_vote">
-			<%= skip_vote_open_function(pairwise_content) %>
-	</div>
-  <div id="skip_vote_reasons_<%= pairwise_content.id %>" class="skip_vote_reasons">
-  <% if question %>
-    <%= render :partial => 'content_viewer/pairwise_skips', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
-  <% end %>
-  </div>
+  <%= render :partial => 'content_viewer/pairwise_skip_vote', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
 
 	<% if pairwise_content.allow_new_ideas? %>
     <% if user %>
