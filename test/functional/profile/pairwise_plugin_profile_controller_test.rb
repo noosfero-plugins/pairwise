@@ -13,12 +13,12 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
 
   def setup
     @environment = Environment.default
-  
+
     @pairwise_client = Pairwise::Client.build(1, pairwise_env_settings)
     @controller = PairwisePluginProfileController.new
     @request = ActionController::TestRequest.new
     @response = ActionController::TestResponse.new
-   
+
     @profile = fast_create(Community, :environment_id => @environment.id)
     @question = PairwiseContentFixtures.pairwise_question_with_prompt
     @user = create_user('testinguser').person
@@ -31,16 +31,24 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     @profile.articles << @content
   end
 
+  should 'load question without prompt' do
+    login_as(@user.user.login)
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content).at_least_once
+
+    get :prompt, :profile => @profile.identifier, :id => @content.id, :question => @question.id
+    assert_not_nil assigns(:pairwise_content)
+    assert_match /#{@question.name}/, @response.body
+    assert_no_match /#{@question.prompt.left_choice_text}/, @response.body
+    assert_no_match /#{@question.prompt.right_choice_text}/, @response.body
+  end
+
   should 'get a first prompt' do
     login_as(@user.user.login)
-    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content)
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content).at_least_once
     @content.expects(:question_with_prompt_for_visitor).with(@user.identifier, nil).returns(@question)
-    get :prompt,
-                  :profile => @profile.identifier,
-                  :id => @content.id,
-                  :question_id => @question.id
-    assert_not_nil  assigns(:pairwise_content)
-    assert_match /#{@question.name}/, @response.body
+
+    xhr :get, :load_prompt, :profile => @profile.identifier, :id => @content.id
+    assert_not_nil assigns(:pairwise_content)
     assert_match /#{@question.prompt.left_choice_text}/, @response.body
     assert_match /#{@question.prompt.right_choice_text}/, @response.body
   end
@@ -49,15 +57,9 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     login_as(@user.user.login)
     PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content)
     @content.expects(:question_with_prompt_for_visitor).with(@user.identifier, @question.prompt.id.to_s).returns(@question)
-    get :prompt,
-                  :profile => @profile.identifier,
-                  :id => @content.id,
-                  :question_id => @question.id,
-                  :prompt_id => @question.prompt.id
+    xhr :get, :load_prompt, :profile => @profile.identifier, :id => @content.id, :question_id => @question.id, :prompt_id => @question.prompt.id
 
     assert_not_nil  assigns(:pairwise_content)
-
-    assert_match /#{@question.name}/, @response.body
     assert_match /#{@question.prompt.left_choice_text}/, @response.body
     assert_match /#{@question.prompt.right_choice_text}/, @response.body
   end

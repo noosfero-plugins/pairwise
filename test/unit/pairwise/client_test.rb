@@ -5,6 +5,7 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = "#{Rails.root}/plugins/pairwise/test/fixtures/vcr_cassettes"
   c.hook_into :webmock
+  c.debug_logger = File.open('/tmp/log.txt', 'w')
 end
 
 class Pairwise::ClientTest < ActiveSupport::TestCase

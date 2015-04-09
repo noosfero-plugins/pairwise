@@ -1,6 +1,6 @@
 extend PairwisePlugin::Helpers::ViewerHelper
 
-question = @pairwise_content.prepare_prompt(pairwise_user_identifier(user), nil)
+question = @pairwise_content.prepare_prompt(pairwise_user_identifier(user), params[:prompt_id])
 
 spinner = "pairwise_spinner#{@pairwise_content.id}"
 
