@@ -324,6 +324,10 @@ class PairwisePlugin::PairwiseContent < Article
     20
   end
 
+  def in_group?
+    parent.kind_of?(PairwisePlugin::PairwiseGroup)
+  end
+
 private
 
   def set_next_prompt(prompt)

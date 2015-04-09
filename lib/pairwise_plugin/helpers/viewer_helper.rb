@@ -81,14 +81,24 @@ module PairwisePlugin::Helpers::ViewerHelper
    end
 
   def pairwise_embeded_code(pairwise_content)
-    embeded_url = url_for({:controller => "pairwise_plugin_profile",
-                                        :profile => pairwise_content.profile.identifier,
-                                        :action => "prompt",
-                                        :id => pairwise_content.id,
-                                        :question_id => pairwise_content.question.id,
-                                        :embeded => 1,
-                                        :source => "SOURCE_NAME",
-                                        :only_path => false})
+    embeded_url = nil
+    if pairwise_content.in_group?
+      embeded_url = url_for({:controller => "pairwise_plugin_profile",
+                             :profile => pairwise_content.profile.identifier,
+                             :action => "group",
+                             :id => pairwise_content.parent.id,
+                             :embeded => 1,
+                             :only_path => false})
+    else
+      embeded_url = url_for({:controller => "pairwise_plugin_profile",
+                             :profile => pairwise_content.profile.identifier,
+                             :action => "prompt",
+                             :id => pairwise_content.id,
+                             :question_id => pairwise_content.question.id,
+                             :embeded => 1,
+                             :source => "SOURCE_NAME",
+                             :only_path => false})
+    end
     embeded_code = "<iframe src='#{embeded_url}' style='width:100%;height:400px'  frameborder='0' allowfullscreen ></iframe>"
 
     label = "<hr/>"

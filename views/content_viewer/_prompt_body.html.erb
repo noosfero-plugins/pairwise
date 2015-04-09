@@ -2,7 +2,15 @@
 <div id="pairwise_main" class="pairwise_main">
   <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :prompt} %>
   <div class="pairwise_content">
-      <div class="pairwise_body"><%= pairwise_content.title %></div>
+      <% if pairwise_content.in_group? %>
+        <div class="pairwise_body"><%= pairwise_content.parent.title %></div>
+        <div class="body">
+          <%= pairwise_content.parent.body %>
+        </div>
+        <div class="group-item-title"><%= pairwise_content.title %></div>
+      <% else %>
+        <div class="pairwise_body"><%= pairwise_content.title %></div>
+      <% end %>
       <div class="pairwise_call_for_action"><%= pairwise_content.body %></div>
       <%= render :partial => 'content_viewer/pairwise_prompts', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
       <% if embeded %>
