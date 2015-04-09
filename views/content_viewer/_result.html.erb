@@ -48,7 +48,7 @@
   </div>
   <% end %>
 
-  <% if @page.allow_edit?(user) %>
+  <% if !embeded && @page.allow_edit?(user) %>
     <div class="embeded_code">
       <span class="embeded_code_link"><a href="javascript:;"><%= _("Show/Hide Embeded Code") %></a></span>
       <div id="pairwise_embeded_box" style="display:none">

@@ -220,6 +220,27 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     assert_select "div[class='total_votes']", 1
   end
 
+  should 'do not show embeded code when embeded' do
+    login_as(@user.user.login)
+    @question.expects(:get_choices).returns(PairwiseContentFixtures.choices_with_stats).at_least_once
+    PairwisePlugin::PairwiseContent.any_instance.expects(:question).returns(@question).at_least_once
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content).at_least_once
+
+    xhr :get, :result, :profile => @profile.identifier, :id => @content.id, :question_id => @question.id, :embeded => true
+
+    assert_select '.embeded_code_link', 0
+  end
+
+  should 'show embeded code when not embeded' do
+    login_as(@user.user.login)
+    @question.expects(:get_choices).returns(PairwiseContentFixtures.choices_with_stats).at_least_once
+    PairwisePlugin::PairwiseContent.any_instance.expects(:question).returns(@question).at_least_once
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content).at_least_once
+
+    xhr :get, :result, :profile => @profile.identifier, :id => @content.id, :question_id => @question.id, :embeded => false
+    assert_select '.embeded_code_link', 1
+  end
+
   should 'suggest new idea' do
     login_as(@user.user.login)
 
