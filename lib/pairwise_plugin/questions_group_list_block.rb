@@ -9,11 +9,8 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
   end
 
   settings_items :group_description, :type => String
-  settings_items :view_type, :type => String, :default => 'menu'
 
-  attr_accessible :group_description, :questions_ids, :random_sort, :view_type
-
-  AVAILABLE_VIEW_TYPES = [[_('Menu'), 'menu'], [_('List'), 'list']]
+  attr_accessible :group_description, :questions_ids, :random_sort
 
   def content(args={})
     block = self
