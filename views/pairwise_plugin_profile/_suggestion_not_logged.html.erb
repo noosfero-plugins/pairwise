@@ -1,0 +1,13 @@
+<div id="suggestions_box_not_logged">
+  <%= modal_inline_link_to(_('Would you like to suggest an idea?'), login_url, '#inlineLoginBox', :id => 'link_login') %>
+  <div id='inlineLoginBox' style='display: none;'>
+    <div class="pairwise-plugin">
+      <%= render :file => 'account/login', :locals => { :is_popin => true } %>
+    </div>
+  </div>
+  <script>
+    jQuery(document).ready(function($) {
+        $('.login-box a').attr('target','_blank');
+    });
+  </script>
+</div>

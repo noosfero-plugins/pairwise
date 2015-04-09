@@ -122,6 +122,19 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     assert_select "div#suggestions_box", 0
   end
 
+  should 'show login button when new ideas were allowed but user is not logged in' do
+    #login_as(@user.user.login)
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content)
+    get :prompt,
+                  :profile => @profile.identifier,
+                  :id => @content.id,
+                  :question_id => @question.id,
+                  :prompt_id => @question.prompt.id
+    assert_not_nil  assigns(:pairwise_content)
+    assert_select "div#suggestions_box_not_logged", 1
+  end
+
+
   should 'skip prompt' do
     login_as @user.user.login
     next_prompt_id = 33

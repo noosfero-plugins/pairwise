@@ -556,3 +556,6 @@ div.pairwise_group_menu_container .questions-menu .menu .label {
   margin-bottom: 10px;
 }
 
+.pairwise-plugin .login-box .icon-close {
+  display: none !important;
+}
