@@ -1,0 +1,32 @@
+<div class="questions-menu clearfix">
+  <span class="menu-icon">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </span>
+  <span class="icon-label"><%= _('Select theme') %></span>
+  <% if questions.count > 1 %>
+    <div class="menu" style="display: none">
+      <div class="label">
+        <%= _('Select a specific theme below to vote on proposals:') %>
+      </div>
+      <div class="items">
+        <% questions.each_with_index do |pairwise_content, index| %>
+          <div class="item <%= pairwise_group_row_classes(index) %>">
+            <%= pairwise_content.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    $('.pairwise_group_menu_container .questions-menu .menu-icon').click(function() {
+      $(this).siblings('.menu').toggle();
+    });
+    $('.pairwise_group_menu_container .questions-menu .items .row').click(function() {
+      $('.pairwise_group_menu_container .questions-menu .menu').hide('fast');
+    });
+  });
+</script>

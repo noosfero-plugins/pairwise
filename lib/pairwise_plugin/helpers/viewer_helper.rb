@@ -88,6 +88,7 @@ module PairwisePlugin::Helpers::ViewerHelper
                              :action => "group",
                              :id => pairwise_content.parent.id,
                              :embeded => 1,
+                             :source => "SOURCE_NAME",
                              :only_path => false})
     else
       embeded_url = url_for({:controller => "pairwise_plugin_profile",
