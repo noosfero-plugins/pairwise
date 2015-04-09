@@ -19,7 +19,7 @@ class PairwisePlugin < Noosfero::Plugin
   end
 
   def content_types
-    [PairwisePlugin::PairwiseContent]
+    [PairwisePlugin::PairwiseContent, PairwisePlugin::PairwiseGroup]
     # if context.profile.is_a?(Community)
     # else
     #   []

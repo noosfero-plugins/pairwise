@@ -1,7 +1,6 @@
 <% extend PairwisePlugin::Helpers::ViewerHelper %>
-<% questions = block.questions_for_view || [] %>
 
-<div id='pairwise_group_list_block_<%= block.id %>' class="pairwise_group_menu_container" data-open-prompt="0">
+<div id='pairwise_group_list_block_<%= pairwise_group.id %>' class="pairwise_group_menu_container" data-open-prompt="0">
   <div class="questions-menu clearfix">
     <span class="menu-icon">
       <span class="icon-bar"></span>
@@ -25,35 +24,11 @@
     <% end %>
   </div>
 	<div class="question container">
-    <% if block.questions.blank? %>
+    <% if questions.blank? %>
       <span><%= _("Empty") %></span>
     <% else %>
       <% questions.each_with_index do |pairwise_content, index| %>
-        <%#= pairwise_group_content_body(index, pairwise_content) %>
-        <div class="pairwise_inner_body" id="pairwise_inner_body_<%= pairwise_content.id %>" style="<%= index!=0 ? 'display:none' : '' %>" >
-          <div id="pairwise_<%= pairwise_content.id %>">
-          <div id="pairwise_main" class="pairwise_main">
-            <% embeded = params[:embeded] %>
-            <% question = nil %>
-
-            <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :prompt} %>
-
-            <div class="pairwise_content">
-              <div class="pairwise_body"><%= block.title %></div>
-              <div class="description">
-                <%= block.group_description %>
-              </div>
-              <div class=""><%= pairwise_content.title %></div>
-              <%= render :partial => 'content_viewer/pairwise_prompts', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
-              <% if embeded %>
-                <div class="footer"><%= _('Powered by') + ' ' + pairwise_content.environment.name%></div>
-              <% end %>
-            </div>
-
-            <%= render :partial => 'content_viewer/pairwise_skip_vote', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :question => question, :source => (defined?(source) ? source : '') } %>
-          </div>
-          </div>
-        </div>
+        <%= pairwise_group_content_body(index, pairwise_content) %>
       <% end %>
     <% end %>
 	</div>
@@ -67,18 +42,11 @@
     $('.pairwise_group_menu_container .questions-menu .items .row').click(function() {
       $('.pairwise_group_menu_container .questions-menu .menu').hide('fast');
     });
-
-    function updatePairwiseMenuInfo() {
-      var block_id = '#pairwise_group_list_block_<%= block.id %>';
-      $(block_id + ' .pairwise_body').text('<%= block.title %>');
-      $(block_id + ' .pairwise_body').after('<div class="description"><%= block.group_description %></div>');
-    }
-    //updatePairwiseMenuInfo();
   });
 
 // FIXME move to js file
 jQuery(document).ready(function($){
-	var block_id = '#pairwise_group_list_block_<%= block.id %>';
+	var block_id = '#pairwise_group_list_block_<%= pairwise_group.id %>';
 	var block_element = $(block_id);
 	var questions_arrows = $(block_id + ' .arrow');
 	var questions_rows = $(block_id + ' .row');

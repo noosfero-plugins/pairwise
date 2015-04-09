@@ -14,6 +14,11 @@ class PairwisePluginProfileController < ProfileController
     end
   end
 
+  def group
+    pairwise_group ||= profile.articles.find(params[:id])
+    instance_exec(&pairwise_group.to_html('embeded' => true))
+  end
+
   #FIXME reuse
   def load_prompt
     @pairwise_content = find_content(params)
