@@ -17,7 +17,7 @@ class PairwisePluginPublicController < PublicController
   end
 
   def vote
-    question_id = paarms[:id]
+    question_id = params[:id]
     client = PairwiseClient.new params[:profile_id]
     redirect_to :index
   end
