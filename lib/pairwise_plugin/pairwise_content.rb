@@ -59,9 +59,17 @@ class PairwisePlugin::PairwiseContent < Article
     embeded = options.has_key? "embeded"
     prompt_id = options["prompt_id"]
     pairwise_content = self
-    proc do
-      locals = {:pairwise_content =>  pairwise_content, :source => source, :embeded => embeded, :prompt_id => prompt_id }
-      render :file => 'content_viewer/prompt', :locals => locals
+
+    if not  Environment.default.enabled_plugins.include? "PairwisePlugin"
+      proc do
+        locals = {:pairwise_content =>  pairwise_content, :source => source, :embeded => embeded, :prompt_id => prompt_id }
+        render :file => 'content_viewer/closed_pool', :locals => locals
+      end
+    else
+      proc do
+        locals = {:pairwise_content =>  pairwise_content, :source => source, :embeded => embeded, :prompt_id => prompt_id }
+        render :file => 'content_viewer/prompt', :locals => locals
+      end
     end
   end
 
