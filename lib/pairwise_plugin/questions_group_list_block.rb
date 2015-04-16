@@ -20,7 +20,7 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
     #  content += ( question ? article_to_html(question,:gallery_view => false, :format => 'full').html_safe : _('No Question selected yet.') )
     #end
     proc do
-      render :file => "blocks/questions_group_#{block.view_type}", :locals => {:block => block}
+      render :file => "blocks/questions_group_list", :locals => {:block => block}
     end
   end
 
