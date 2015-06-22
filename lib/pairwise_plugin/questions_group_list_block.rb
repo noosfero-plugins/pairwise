@@ -123,4 +123,10 @@ class PairwisePlugin::QuestionsGroupListBlock < Block
   def embedable?
     true
   end
+
+  def cache_key_with_person(params = {}, user = nil, language = 'en')
+    cache_key_without_person + (user && created_by == user ? "-#{user.identifier}" : '')
+  end
+  alias_method_chain :cache_key, :person
+
 end
