@@ -117,13 +117,13 @@ module PairwisePlugin::Helpers::ViewerHelper
   def pairwise_result_link(label, pairwise_content, embeded = false, options = {})
     link_target = pairwise_content.result_url
     link_target.merge!(:embeded => 1) if embeded
-    link_to  label, link_target, options
+    link_to  label, link_target.merge(:profile => pairwise_content.profile.identifier), options
   end
 
   def pairwise_tab_remote_link(label, link_target, pairwise_content, embeded = false, options = {})
     link_target.merge!(:embeded => 1) if embeded
     loading_javascript = pairwise_spinner_show_function_call(pairwise_content) + pairwise_hide_skip_call(pairwise_content)
-    link_to_remote label, :loading => loading_javascript, :url => link_target, :html => options
+    link_to_remote label, :loading => loading_javascript, :url => link_target.merge(:profile => pairwise_content.profile.identifier), :html => options
   end
 
   def pairwise_suggestion_url(question, embeded = false, source = nil)
