@@ -335,7 +335,7 @@ class PairwisePlugin::PairwiseContent < Article
   end
 
   def cache_key_with_person(params = {}, user = nil, language = 'en')
-    cache_key_without_person + (user && created_by == user ? "-#{user.identifier}" : '')
+    cache_key_without_person + (user.present? ? "-#{user.identifier}" : '')
   end
   alias_method_chain :cache_key, :person
 
