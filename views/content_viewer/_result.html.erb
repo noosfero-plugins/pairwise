@@ -17,7 +17,6 @@
 
   <%= render :partial => 'content_viewer/menu', :locals => {:embeded => embeded, :pairwise_content => pairwise_content, :active_tab => :results} %>
 
-  <% cache_timeout("pairwise-result-#{pairwise_content.id}", 1.hours) do %>
   <div class="pairwise_content">
     <%= pairwise_spinner(pairwise_content) %>
 
@@ -46,7 +45,6 @@
       </tbody>
     </table>
   </div>
-  <% end %>
 
   <% if !embeded && @page.allow_edit?(user) %>
     <div class="embeded_code">
