@@ -2,7 +2,7 @@
   width: 94%;
 }
 
-.pairwise-plugin_pairwise-content #article-header .title {
+.pairwise-plugin_pairwise-content.active #article-header .title {
   display: none;
 }
 

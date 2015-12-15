@@ -31,6 +31,7 @@ class PairwisePluginProfileController < ProfileController
 
   def choose
     @pairwise_content = find_content(params)
+    return render_access_denied if @pairwise_content.archived?
     vote = @pairwise_content.vote_to(params[:prompt_id], params[:direction], user_identifier, params[:appearance_id])
     if request.xhr? 
       render 'content_viewer/load_prompt.rjs'
@@ -153,4 +154,3 @@ class PairwisePluginProfileController < ProfileController
 
 
 end
-

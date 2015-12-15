@@ -54,14 +54,23 @@ class PairwisePlugin::PairwiseContent < Article
     'Question managed by pairwise'
   end
 
+  def css_class_name
+    cl = "pairwise-plugin_pairwise-content"
+    cl += archived? ? " archived" : " active"
+  end
+
   def to_html(options = {})
     source = options["source"]
     embeded = options.has_key? "embeded"
     prompt_id = options["prompt_id"]
     pairwise_content = self
-    if not Environment.default.enabled_plugins.include? "PairwisePlugin"
+    if not environment.plugin_enabled?(PairwisePlugin)
       proc do
         render :file => 'content_viewer/closed_pool'
+      end
+    elsif pairwise_content.archived?
+      proc do
+        render :file => 'content_viewer/read_only', :locals => {:pairwise_content => pairwise_content}
       end
     else
       proc do

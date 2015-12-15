@@ -271,4 +271,20 @@ class PairwisePluginProfileControllerTest < ActionController::TestCase
     assert_redirected_to @content.url
     assert_equal "Only logged user could suggest new ideas", flash[:error]
   end
+
+  should 'not register a vote when pairwise is archived' do
+    login_as(@user.user.login)
+    @content.update_attribute(:archived, true)
+    PairwisePluginProfileController.any_instance.expects(:find_content).returns(@content).at_least_once
+
+    get :choose,
+                  :profile => @profile.identifier,
+                  :id => @content.id,
+                  :question_id => @question.id,
+                  :prompt_id => @question.prompt.id,
+                  :appearance_id => @question.appearance_id,
+                  :direction => 'left'
+    assert_response 403
+  end
+
 end
